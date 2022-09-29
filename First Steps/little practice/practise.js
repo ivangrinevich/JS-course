@@ -29,9 +29,6 @@ switch (num) {
         break;
     case '50':
         console.log('Yeah');
-        break; 
-    case '60':
-        console.log('Close');
         break;    
     default:
         console.log('Try again');
