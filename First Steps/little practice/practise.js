@@ -6,17 +6,17 @@ if (1) {
     console.log('Error');
 }
 
-const num = 50;
+const num1 = 50;
 
-if (num < 49) {
+if (num1 < 49) {
     console.log('Error');
-}else if (num > 100) {
+}else if (num1 > 100) {
     console.log('Too much');
 } else {
     console.log('Ok!');
 }
 
-(num === 50) ? console.log('Ok!') : console.log('Error');
+(num1 === 50) ? console.log('Ok!') : console.log('Error');
 
 const num = '50';
 
