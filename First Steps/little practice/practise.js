@@ -1,23 +1,41 @@
 "use strict";
 
-let num = 50;
+let num = 20;
 
-while (num <= 55) {
+function showFirstMessage(text) {
+    console.log(text);
+    let num = 10;
     console.log(num);
-    num++;
 }
 
-do {
-    console.log(num);
-    num++;
-}
- while (num < 55);
+showFirstMessage("Hello world!");
+console.log(num);
 
-for (let i = 1; i < 10; i++) {
-    if (i === 6) {
-        // break;
-        continue;
-    }
-
-    console.log(i);
+function calc(a, b) {
+    return (a + b);
 }
+
+console.log(calc(4, 3));
+console.log(calc(5, 6));
+console.log(calc(10, 6));
+
+function ret() {
+    let num = 50;
+    return num;
+}
+
+const anotherNum = ret();
+console.log(anotherNum);
+
+const logger = function() {
+    console.log("Hello");   
+};
+
+logger();
+
+const calculator = (a, b) => {
+    console.log("Result is");
+    return a + b;
+}; 
+
+console.log(calculator(5, 4));
