@@ -81,4 +81,23 @@ function log(a, b, c) {
 
 const num = [2, 5, 7];
 
-log(...numbers);
+log(...num);
+
+const array = ["a", "b"];
+
+const newAarray = [...array];
+newAarray[1] = "c";
+
+console.log(array);
+console.log(newAarray);
+
+const q = {
+    one: 1,
+    two: 2
+};
+
+const newObj = {...q};
+newObj.one = "one";
+
+console.log(newObj);
+console.log(q);
