@@ -74,7 +74,7 @@ const personalMovieDB = {
         //         personalMovieDB.genres[i - 1] = genre;
         //     }    
         // }
-            let genres = prompt("Введите ваши любимые жанры через запятую");
+            let genres = prompt("Введите ваши любимые жанры через запятую").toLowerCase();
             
             if (genres === '' || genres === null) {
                 console.log('Вы ввели некорректные данные или не ввели их вообще');
