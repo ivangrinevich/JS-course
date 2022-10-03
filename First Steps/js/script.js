@@ -1,93 +1,54 @@
-/* Задание 4:
-1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
-перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
-Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
-2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
-переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
-3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
-Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
-при помощи метода forEach вывести в консоль сообщения в таком виде:
-"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
+/* Задание 5:
 
-"use strict";
+1) Удалить все рекламные блоки со страницы (правая часть сайта)
 
+2) Изменить жанр фильма, поменять "комедия" на "драма"
 
-const personalMovieDB = {
-    count: 0,
-    movies: {},
-    actors: {},
-    genres: [],
-    private: false,
-    start: function() {
-        personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
-        
-        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
-            personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");        
-        }
-    },
-    rememberMyFilms: function() {
-        let i = 0;
-        do {
-            const a = prompt('Один из последних просмотренных фильмов?'),
-                  b = prompt('На сколько оцените его?');
-    
-            if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-                personalMovieDB.movies[a] = b;
-                console.log('done');
-                i++;
-            } else {
-                console.log('error');
-            }      
-    } while (i < 2);
-    },
-    detectPersonalLevel: function() {
-        if (personalMovieDB.count < 10) {
-            console.log("Просмотрено довольно мало фильмов");
-        } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-            console.log("Вы классический зритель");    
-        } else if (personalMovieDB.count >= 30) {
-            console.log("Вы киноман"); 
-        } else {
-            console.log("Произошла ошибка");
-        }
-    },
-    showMyDB: function(hidden) {
-        if (!hidden) {
-            console.log(personalMovieDB);    
-        }
-    },
-    toggleVisibleMyDB: function() {
-        if (personalMovieDB.privat) {
-            personalMovieDB.privat = false;
-        } else {
-            personalMovieDB.privat = true;
-        }    
-    },
-    writeYourGenres: function () {
-        for (let i = 1; i < 2; i++) {
-        //     let genre = prompt(`Ваш любимый жанр под номером ${i}`);
-            
-        //     if (genre === '' || genre === null) {
-        //         console.log('Вы ввели некорректные данные или не ввели их вообще');
-        //         i--;
-        //     } else {
-        //         personalMovieDB.genres[i - 1] = genre;
-        //     }    
-        // }
-            let genres = prompt("Введите ваши любимые жанры через запятую").toLowerCase();
-            
-            if (genres === '' || genres === null) {
-                console.log('Вы ввели некорректные данные или не ввели их вообще');
-                 i--;
-            } else {
-                    personalMovieDB.genres = genres.split(', ');
-                    personalMovieDB.genres.sort();
-            }
-        }
-        
-        personalMovieDB.genres.forEach((item, i) => {
-            console.log(`Любимый жанр ${i + 1} - это ${item}`);
-        });    
-    }
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+Реализовать только при помощи JS
+
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+Отсортировать их по алфавиту 
+
+5) Добавить нумерацию выведенных фильмов */
+
+'use strict';
+
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Одержимость",
+        "Скотт Пилигрим против..."
+    ]
 };
 
+const adv = document.querySelectorAll('.promo__adv'),
+      poster = document.querySelector('.promo__bg'),
+      genre = poster.querySelector('.promo__genre'),
+      movieList = document.querySelector('.promo__interactive-list');
+
+adv.forEach(item => {
+    item.remove();
+});
+
+// adv.forEach(function(item) {
+//     item.remove();
+// });
+
+genre.textContent = 'драма';
+
+poster.style.backgroundImage = 'url("img/bg.jpg")';
+
+movieList.innerHTML = "";
+
+movieDB.movies.sort();
+
+movieDB.movies.forEach((film, i) => {
+    movieList.innerHTML += `
+    <li class="promo__interactive-item">${i + 1}. ${film}
+         <div class="delete"></div>
+    </li>
+    `;
+});
