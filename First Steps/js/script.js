@@ -12,6 +12,8 @@ P.S. Здесь есть несколько вариантов решения з
 
 'use strict';
 
+console.log('Test');
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const movieDB = {
