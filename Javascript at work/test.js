@@ -1,46 +1,33 @@
 "use strict";
 
-const btn = document.querySelector('.btn');
-let timerId,
-    i = 0;
+const now = new Date('2022-10-06');
+// new Date.parse('2022-10-06');
 
-function myAnimation() {
-    const elem = document.querySelector('.box');
-    let pos = 0;
+console.log(now.setHours(10));
+console.log(now);
 
-    const id = setInterval(frame, 10);
-    function frame() {
-        if (pos == 300) {
-            clearInterval(id);
-        } else {
-            pos++;
-            elem.style.top = pos + "px";
-            elem.style.left = pos + "px";
-        }
-    }
-}  
+// console.log(now.getFullYear());
+// console.log(now.getMonth());
+// console.log(now.getDate());
+// console.log(now.getHours());
+// console.log(now.getMinutes());
+// console.log(now.getSeconds());
+// console.log(now.getMilliseconds());
+// console.log(now.getDay());
 
-btn.addEventListener('click', myAnimation);
+// console.log(now.getHours());
+// console.log(now.getUTCHours());
 
-// btn.addEventListener('click', () => {
-//     // const timerId = setTimeout(logger, 2000);
-//     timerId = setInterval(logger, 500);
-// });
+// console.log(now.getTimezoneOffset());
 
-// const timerId = setTimeout(function(text) {
-//     console.log(text);
-// }, 2000, 'Hello world');
+// console.log(now.getTime());
 
-function logger() {
-    if (i === 3) {
-        clearInterval(timerId);
-    }
-    console.log('text');
-    i++;
+let start = new Date();
+
+for (let i = 0; i < 100000; i++) {
+    let some = i ** 3;
 }
 
-// let id = setTimeout(function log() {
-//     console.log('Hello');
-//     id = setTimeout(log, 500);
-// }, 500);
+let end = new Date();
 
+alert(`Цикл отработал за ${end - start} миллисекунд`);
